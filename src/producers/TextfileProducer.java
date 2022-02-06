@@ -1,0 +1,66 @@
+package producers;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import javax.swing.ImageIcon;
+
+import misc.Message;
+
+public class TextfileProducer implements MessageProducer {
+
+    private int delay;
+    private int times;
+    private int size;
+    private int currentIndex;
+    private Message[] messages;
+
+    public TextfileProducer(String filepath) throws IOException {
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(
+                        new FileInputStream(filepath),
+                        "UTF-8"));
+
+        times = Integer.parseInt(in.readLine());
+        delay = Integer.parseInt(in.readLine());
+        size = Integer.parseInt(in.readLine());
+        currentIndex = 0;
+
+        messages = new Message[size];
+
+        for (int i = 0; i < size; i++) {
+            messages[i] = new Message(in.readLine(), new ImageIcon(in.readLine()));
+        }
+
+    }
+
+    @Override
+    public int delay() {
+        return delay;
+    }
+
+    @Override
+    public int times() {
+        return times;
+    }
+
+    @Override
+    public int size() {
+        return size;
+    }
+
+    @Override
+    public Message nextMessage() {
+
+        if (size == 0) {
+            return null;
+        }
+
+        currentIndex = (currentIndex + 1) % size;
+        return messages[currentIndex];
+
+    }
+
+}
