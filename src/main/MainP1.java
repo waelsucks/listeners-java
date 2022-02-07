@@ -23,24 +23,15 @@ public class MainP1 {
 		Buffer<MessageProducer> producerBuffer	= new Buffer<MessageProducer>();
 		
 		MessageManager messageManager = new MessageManager(messageBuffer);
-		P1Viewer v1 = new P1Viewer(messageManager, 300, 200);
-		P1Viewer v2 = new P1Viewer(messageManager, 320, 320);
-		P1Viewer v3 = new P1Viewer(messageManager, 200, 400);
-		P1Viewer v4 = new P1Viewer(messageManager, 200, 400);
-		
-		Viewer.showPanelInFrame(v1, "Viewer 1", 100, 50);
-		Viewer.showPanelInFrame(v2, "Viewer 2", 450, 50);
-		Viewer.showPanelInFrame(v3, "Viewer 3", 800, 200);
-		Viewer.showPanelInFrame(v4, "Viewer 4", 200, 200);
 		messageManager.start();
 		
 		Producer producer = new Producer(producerBuffer,messageBuffer);
 		producer.start();
 		
 		MessageProducerInput ipManager = new MessageProducerInput(producerBuffer);
-		// ipManager.addMessageProducer(getArrayProducer(10,100));
+		ipManager.addMessageProducer(getArrayProducer(10,100));
 		ipManager.addMessageProducer(new ShowGubbe(3000));
-		// ipManager.addMessageProducer(new TextfileProducer("files/new.txt"));
+		ipManager.addMessageProducer(new TextfileProducer("files/new.txt"));
 
 		MessageInputPanel inputPanel = new MessageInputPanel(ipManager, messageManager);
 
