@@ -1,5 +1,7 @@
+package main;
 
 import java.io.IOException;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 
@@ -11,6 +13,7 @@ import producers.MessageProducer;
 import producers.MessageProducerInput;
 import producers.Producer;
 import producers.TextfileProducer;
+import view.MessageInputPanel;
 import view.P1Viewer;
 import view.Viewer;
 
@@ -28,16 +31,19 @@ public class MainP1 {
 		Viewer.showPanelInFrame(v1, "Viewer 1", 100, 50);
 		Viewer.showPanelInFrame(v2, "Viewer 2", 450, 50);
 		Viewer.showPanelInFrame(v3, "Viewer 3", 800, 200);
-		Viewer.showPanelInFrame(v4, "Viewer 3", 200, 200);
+		Viewer.showPanelInFrame(v4, "Viewer 4", 200, 200);
 		messageManager.start();
 		
 		Producer producer = new Producer(producerBuffer,messageBuffer);
 		producer.start();
 		
-		MessageProducerInput ipManager = new MessageProducerInput(producerBuffer);		
-		ipManager.addMessageProducer(getArrayProducer(10,100));
+		MessageProducerInput ipManager = new MessageProducerInput(producerBuffer);
+		// ipManager.addMessageProducer(getArrayProducer(10,100));
 		ipManager.addMessageProducer(new ShowGubbe(3000));
-		ipManager.addMessageProducer(new TextfileProducer("files/new.txt"));
+		// ipManager.addMessageProducer(new TextfileProducer("files/new.txt"));
+
+		MessageInputPanel inputPanel = new MessageInputPanel(ipManager, messageManager);
+
 	}
 	
     private static ArrayProducer getArrayProducer(int times, int delay) {
@@ -53,6 +59,15 @@ public class MainP1 {
     			new Message("Almost up",new ImageIcon("images/new10.jpg")) };
         return new ArrayProducer(messages,times,delay);       
     }
+
+	public static void spawnViewer(MessageManager manager) {
+
+		Random random = new Random();
+
+		P1Viewer viewer = new P1Viewer(manager, 300, 200);
+		Viewer.showPanelInFrame(viewer, "Viewer", random.nextInt(800), random.nextInt(800));
+	}
+
 }
 
 class ShowGubbe implements MessageProducer {
