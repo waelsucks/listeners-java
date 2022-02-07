@@ -18,17 +18,21 @@ public class Producer extends Thread {
         try {
 
             MessageProducer in;
-            in = producerBuffer.get();
 
-            for (int i = 0; i < in.times(); i++) {
+            while (!interrupted()) {
 
-                for (int j = 0; j < in.size(); j++) {
+                in = producerBuffer.get();
 
-                    messageBuffer.put(in.nextMessage());
-                    sleep(in.delay());
+                for (int i = 0; i < in.times(); i++) {
+
+                    for (int j = 0; j < in.size(); j++) {
+
+                        messageBuffer.put(in.nextMessage());
+                        sleep(in.delay());
+
+                    }
 
                 }
-
             }
 
         } catch (InterruptedException e) {

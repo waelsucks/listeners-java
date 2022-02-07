@@ -28,7 +28,7 @@ public class MainP1 {
 		Viewer.showPanelInFrame(v1, "Viewer 1", 100, 50);
 		Viewer.showPanelInFrame(v2, "Viewer 2", 450, 50);
 		Viewer.showPanelInFrame(v3, "Viewer 3", 800, 200);
-		Viewer.showPanelInFrame(v4, "Viewer 3", 800, 200);
+		Viewer.showPanelInFrame(v4, "Viewer 3", 200, 200);
 		messageManager.start();
 		
 		Producer producer = new Producer(producerBuffer,messageBuffer);

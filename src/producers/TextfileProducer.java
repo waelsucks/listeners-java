@@ -16,22 +16,36 @@ public class TextfileProducer implements MessageProducer {
     private int currentIndex;
     private Message[] messages;
 
-    public TextfileProducer(String filepath) throws IOException {
+    public TextfileProducer(String filepath) {
 
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(
-                        new FileInputStream(filepath),
-                        "UTF-8"));
+        BufferedReader in = null;
 
-        times = Integer.parseInt(in.readLine());
-        delay = Integer.parseInt(in.readLine());
-        size = Integer.parseInt(in.readLine());
-        currentIndex = 0;
+        try {
+            in = new BufferedReader(
+                    new InputStreamReader(
+                            new FileInputStream(filepath),
+                            "UTF-8"));
 
-        messages = new Message[size];
+            times = Integer.parseInt(in.readLine());
+            delay = Integer.parseInt(in.readLine());
+            size = Integer.parseInt(in.readLine());
+            currentIndex = 0;
 
-        for (int i = 0; i < size; i++) {
-            messages[i] = new Message(in.readLine(), new ImageIcon(in.readLine()));
+            messages = new Message[size];
+
+            for (int i = 0; i < size; i++) {
+                messages[i] = new Message(in.readLine(), new ImageIcon(in.readLine()));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
 
     }

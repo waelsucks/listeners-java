@@ -2,12 +2,11 @@ package tests;
 
 import java.io.IOException;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 import misc.Buffer;
 import misc.Message;
+
 import producers.ArrayProducer;
 import producers.MessageProducer;
 import producers.MessageProducerInput;

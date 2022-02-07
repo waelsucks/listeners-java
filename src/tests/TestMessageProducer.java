@@ -6,9 +6,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import misc.Message;
 import producers.ArrayProducer;
