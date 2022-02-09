@@ -43,21 +43,37 @@ public class ObjectfileProducer implements MessageProducer {
 
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int delay() {
         return delay;
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int times() {
         return times;
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int size() {
         return size;
     }
 
+    
+    /** 
+     * @return Message
+     */
     @Override
     public Message nextMessage() {
 

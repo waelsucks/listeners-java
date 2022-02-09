@@ -29,6 +29,10 @@ public class MessageInputPanel extends JOptionPane implements Runnable {
 
     }
 
+    
+    /** 
+     * @param commands
+     */
     private void command(String[] commands) {
         for (String string : commands) {
 
@@ -65,17 +69,6 @@ public class MessageInputPanel extends JOptionPane implements Runnable {
             if (options.length == 2) {
                 times = Integer.parseInt(options[1]);
             }
-
-            // if (message.contains("-spawn")) {
-
-            // String[] amt = message.split(" ");
-
-            // for (int i = 0; i < Integer.parseInt(amt[1]); i++) {
-            // MainP1.spawnViewer(manager);
-            // }
-
-            // continue;
-            // }
 
             if (message.contains("-")) {
                 String[] cmd = message.split("-");

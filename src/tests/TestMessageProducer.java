@@ -14,7 +14,13 @@ import producers.ObjectfileProducer;
 import view.Viewer;
 
 public class TestMessageProducer {
-    private static ArrayProducer getArrayProducer(int times, int delay) {
+    
+	/** 
+	 * @param times
+	 * @param delay
+	 * @return ArrayProducer
+	 */
+	private static ArrayProducer getArrayProducer(int times, int delay) {
     	Message[] messages = { new Message("UP",new ImageIcon("images/new1.jpg")),
     			new Message("Going down.",new ImageIcon("images/new2.jpg")),
     			new Message("Going down..",new ImageIcon("images/new3.jpg")),
@@ -28,7 +34,12 @@ public class TestMessageProducer {
         return new ArrayProducer(messages,times,delay);       
     }
     
-    private static void writeToObjectStream(String filename, MessageProducer mp) {
+    
+	/** 
+	 * @param filename
+	 * @param mp
+	 */
+	private static void writeToObjectStream(String filename, MessageProducer mp) {
     	try( FileOutputStream fos = new FileOutputStream(filename);
     			BufferedOutputStream bos = new BufferedOutputStream(fos);
     			ObjectOutputStream oos = new ObjectOutputStream(bos)) {
@@ -44,6 +55,11 @@ public class TestMessageProducer {
     	}
     }
     
+	
+	/** 
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException{	
 		Viewer viewer = new Viewer(300,200);
 		Viewer.showPanelInFrame(viewer,"From MessageProducer",100,50);

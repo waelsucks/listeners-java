@@ -30,6 +30,10 @@ public class Viewer extends JPanel {
 		});
 	}
 	
+	
+	/** 
+	 * @param message
+	 */
 	public void setMessage(Message message) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -39,7 +43,14 @@ public class Viewer extends JPanel {
 		});
 	}	
     
-    public static void showPanelInFrame(final JPanel panel, String title, int x, int y) {
+    
+	/** 
+	 * @param panel
+	 * @param title
+	 * @param x
+	 * @param y
+	 */
+	public static void showPanelInFrame(final JPanel panel, String title, int x, int y) {
     	SwingUtilities.invokeLater(new Runnable() {
     		public void run() {
     	    	JFrame frame = new JFrame(title);

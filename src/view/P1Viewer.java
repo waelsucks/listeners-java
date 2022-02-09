@@ -18,6 +18,10 @@ public class P1Viewer extends Viewer implements PropertyChangeListener {
 
     }
 
+    
+    /** 
+     * @param evt
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         setMessage((Message) evt.getNewValue());  

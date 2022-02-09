@@ -13,11 +13,15 @@ import producers.MessageProducer;
 import producers.MessageProducerInput;
 import producers.Producer;
 import producers.TextfileProducer;
-import view.MessageInputPanel;
 import view.P1Viewer;
 import view.Viewer;
 
 public class MainP1 {
+	
+	/** 
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String[] args) throws IOException {
 		Buffer<Message> messageBuffer = new Buffer<Message>();
 		Buffer<MessageProducer> producerBuffer	= new Buffer<MessageProducer>();
@@ -27,17 +31,28 @@ public class MainP1 {
 		
 		Producer producer = new Producer(producerBuffer,messageBuffer);
 		producer.start();
+
+		spawnViewer(messageManager);
+		spawnViewer(messageManager);
+		spawnViewer(messageManager);
+
 		
 		MessageProducerInput ipManager = new MessageProducerInput(producerBuffer);
 		ipManager.addMessageProducer(getArrayProducer(10,100));
 		ipManager.addMessageProducer(new ShowGubbe(3000));
 		ipManager.addMessageProducer(new TextfileProducer("files/new.txt"));
 
-		MessageInputPanel inputPanel = new MessageInputPanel(ipManager, messageManager);
+		// MessageInputPanel inputPanel = new MessageInputPanel(ipManager, messageManager);
 
 	}
 	
-    private static ArrayProducer getArrayProducer(int times, int delay) {
+    
+	/** 
+	 * @param times
+	 * @param delay
+	 * @return ArrayProducer
+	 */
+	private static ArrayProducer getArrayProducer(int times, int delay) {
     	Message[] messages = { new Message("UP",new ImageIcon("images/new1.jpg")),
     			new Message("Going down.",new ImageIcon("images/new2.jpg")),
     			new Message("Going down..",new ImageIcon("images/new3.jpg")),
@@ -51,6 +66,10 @@ public class MainP1 {
         return new ArrayProducer(messages,times,delay);       
     }
 
+	
+	/** 
+	 * @param manager
+	 */
 	public static void spawnViewer(MessageManager manager) {
 
 		Random random = new Random();

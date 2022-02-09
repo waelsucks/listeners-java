@@ -14,7 +14,13 @@ import producers.TextfileProducer;
 import view.Viewer;
 
 public class TestProducer {
-    private static ArrayProducer getArrayProducer(int times, int delay) {
+    
+	/** 
+	 * @param times
+	 * @param delay
+	 * @return ArrayProducer
+	 */
+	private static ArrayProducer getArrayProducer(int times, int delay) {
     	Message[] messages = { new Message("UP",new ImageIcon("images/new1.jpg")),
     			new Message("Going down.",new ImageIcon("images/new2.jpg")),
     			new Message("Going down..",new ImageIcon("images/new3.jpg")),
@@ -28,6 +34,12 @@ public class TestProducer {
         return new ArrayProducer(messages,times,delay);       
     }
     
+	
+	/** 
+	 * @param args
+	 * @throws IOException
+	 * @throws InterruptedException
+	 */
 	public static void main(String[] args) throws IOException, InterruptedException {
 		Viewer viewer = new Viewer(300,200);
 		Viewer.showPanelInFrame(viewer,"From Buffer<Message>",100,30);

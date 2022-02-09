@@ -29,6 +29,10 @@ public class MessageManager extends Thread {
 
     }
 
+    
+    /** 
+     * @param listener
+     */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }

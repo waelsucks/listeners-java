@@ -13,7 +13,13 @@ import producers.MessageProducerInput;
 import producers.TextfileProducer;
 
 public class TestMessageProducerInput {
-    private static ArrayProducer getArrayProducer(int times, int delay) {
+    
+	/** 
+	 * @param times
+	 * @param delay
+	 * @return ArrayProducer
+	 */
+	private static ArrayProducer getArrayProducer(int times, int delay) {
     	Message[] messages = { new Message("-- UP",new ImageIcon("images/new1.jpg")),
     			new Message("-- Going down.",new ImageIcon("images/new2.jpg")),
     			new Message("-- Going down..",new ImageIcon("images/new3.jpg")),
@@ -27,7 +33,12 @@ public class TestMessageProducerInput {
         return new ArrayProducer(messages,times,delay);       
     }
  
-    public static void main(String[] args) throws IOException{
+    
+	/** 
+	 * @param args
+	 * @throws IOException
+	 */
+	public static void main(String[] args) throws IOException{
 
         Buffer<MessageProducer> producerBuffer = new Buffer<MessageProducer>();
                 

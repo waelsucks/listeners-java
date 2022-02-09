@@ -12,6 +12,10 @@ public class MessageProducerInput {
 
     }
 
+    
+    /** 
+     * @param mp
+     */
     public void addMessageProducer(MessageProducer mp) {
         producerBuffer.put(mp);
     } 

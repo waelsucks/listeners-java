@@ -14,21 +14,37 @@ public class ArrayProducer implements MessageProducer {
 		this.delay = delay;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	@Override
 	public int delay() {
 		return delay;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	@Override
 	public int times() {
 		return times;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	@Override
 	public int size() {
 		return (messages == null) ? 0 : messages.length;
 	}
 
+	
+	/** 
+	 * @return Message
+	 */
 	@Override
 	public Message nextMessage() {
 		if (size() == 0)

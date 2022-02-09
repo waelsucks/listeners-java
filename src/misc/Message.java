@@ -14,10 +14,18 @@ public class Message implements Serializable {
 
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getText() {
         return this.text;
     }
 
+    
+    /** 
+     * @return Icon
+     */
     public Icon getIcon() {
         return this.icon;
     }
