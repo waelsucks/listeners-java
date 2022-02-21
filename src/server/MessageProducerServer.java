@@ -1,7 +1,5 @@
 package server;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -21,7 +19,7 @@ public class MessageProducerServer extends Thread{
 
             serverSocket = new ServerSocket(i);
             this.ipManager = ipManager;
-            System.out.println("Server running...");
+            System.out.println("MessageProducer server running...");
 
 
         } catch (Exception e) {
@@ -33,7 +31,6 @@ public class MessageProducerServer extends Thread{
     @Override
     public void run() {
 
-        MessageProducer messageProducer;
         
         while (true) {
                 
@@ -47,12 +44,11 @@ public class MessageProducerServer extends Thread{
                     socket.getInputStream()
                 );
 
-                ObjectOutputStream output = new ObjectOutputStream(
+                ObjectOutputStream out = new ObjectOutputStream(
                     socket.getOutputStream()
                 );
-
-                messageProducer = (MessageProducer) input.readObject();
-                ipManager.addMessageProducer(messageProducer);
+                
+                ipManager.addMessageProducer((MessageProducer) input.readObject());
                 
 
             } catch (Exception e) {

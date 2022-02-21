@@ -1,16 +1,21 @@
-// package p2;
-
 // import javax.swing.ImageIcon;
 
+// import client.MessageClient;
+// import client.MessageProducerClient;
 // import misc.Buffer;
 // import misc.Message;
 // import misc.MessageManager;
 // import producers.MessageProducer;
 // import producers.MessageProducerInput;
 // import producers.Producer;
+// import producers.Serialize;
 // import producers.TextfileProducer;
+// import server.MessageProducerServer;
+// import server.MessageServer;
 // import view.P1Viewer;
+// import view.P2Viewer;
 // import view.Viewer;
+// import tests.TestP2Input;
 
 // public class MainP2 {
 // 	public static void main(String[] args) {
@@ -45,13 +50,13 @@
 //         MessageProducerServer mpServer = new MessageProducerServer(mpInput,3343);
 //         mpServer.startServer();
 //         MessageProducerClient mpClient1 = new MessageProducerClient("127.0.0.1",3343);
-//         mpClient1.send(TestP2input.getArrayProducer(10,100));
+//         mpClient1.send(TestP2Input.getArrayProducer(10,100));
 //         mpClient1.send(new ShowGubbe(5000));
 //         mpClient1.send(new TextfileProducer("files/new.txt"));
 // 	}
 // }
 
-// class ShowGubbe implements MessageProducer {
+// class ShowGubbe extends Serialize implements MessageProducer {
 // 	private int delay;
 
 // 	public ShowGubbe(int delay) {

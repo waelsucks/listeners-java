@@ -20,7 +20,7 @@ public class MessageProducerClient {
     public MessageProducerClient(String string, int i) {
         
         this.string = string;
-        this.i = i;
+        this.i = i; 
 
     }
 
