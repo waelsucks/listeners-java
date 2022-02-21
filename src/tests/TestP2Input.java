@@ -80,3 +80,5 @@ class ShowGubbe implements MessageProducer {
 	public Message nextMessage() {
 		return new Message("Hi folks...",new ImageIcon("images/gubbe.jpg"));
 	}
+
+}
