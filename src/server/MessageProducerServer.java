@@ -38,8 +38,6 @@ public class MessageProducerServer extends Thread{
                 
                 Socket socket = serverSocket.accept();
 
-                System.out.println("A client has connected!");
-
                 ObjectInputStream input = new ObjectInputStream(
                     socket.getInputStream()
                 );
