@@ -11,6 +11,15 @@ import misc.ClientHandler;
 import misc.Message;
 import misc.MessageManager;
 
+/**
+ * This single threaded class acts as a middleman between the MessageManager and the MessageClient classes.
+ * It recieves new Message objects from the MessageManager and lets the connected clients know there is
+ * a new message to display.
+ * 
+ * @author Adam Joseph
+ * @version 2022-02-21
+ */
+
 public class MessageServer extends Thread implements PropertyChangeListener {
 
     ServerSocket serverSocket;
@@ -18,6 +27,12 @@ public class MessageServer extends Thread implements PropertyChangeListener {
     Message currentMessage;
 
     ArrayList<ClientHandler> informees;
+
+    /**
+     * Creates an instance of the MessageServer class. Parameters are a MessageManager to interpret and a port to listen on.
+     * @param messageManager
+     * @param i
+     */
 
 	public MessageServer(MessageManager messageManager, int i) {
 
@@ -37,6 +52,12 @@ public class MessageServer extends Thread implements PropertyChangeListener {
 		}
         
 	}
+
+    /**
+     * Starts the thread. This method waits for sockets from the server socket on the given port and serves each client an exclusive
+     * ClientHandler object. The ClientHandler acts on an own thread and keeps the MessageClient sockets updated on when new Message objects are
+     * available.
+     */
 
 	@Override
 	public void run(){
@@ -59,6 +80,11 @@ public class MessageServer extends Thread implements PropertyChangeListener {
 
 	}
 
+    
+    /**
+     * Executes whenever a new Message object is available in the MessageManager and notifies the connected ClientHandler
+     * instances of the change.
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         currentMessage = (Message) evt.getNewValue();
@@ -68,6 +94,11 @@ public class MessageServer extends Thread implements PropertyChangeListener {
         }
 
     }
+
+    /**
+     * Returns the current message to be displayed.
+     * @return Message object to currently display.
+     */
 
     public Message getCurrentMessage(){
         return currentMessage;
