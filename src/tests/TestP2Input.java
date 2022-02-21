@@ -10,6 +10,7 @@ import producers.ArrayProducer;
 import producers.MessageProducer;
 import producers.MessageProducerInput;
 import producers.Producer;
+import producers.Serialize;
 import server.MessageProducerServer;
 import view.P1Viewer;
 import view.Viewer;
@@ -57,7 +58,7 @@ public class TestP2Input {
     }
 }
 
-class ShowGubbe implements MessageProducer {
+class ShowGubbe extends Serialize implements MessageProducer {
 	private int delay;
 	
 	public ShowGubbe(int delay) {

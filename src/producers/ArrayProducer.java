@@ -2,7 +2,7 @@ package producers;
 
 import misc.Message;
 
-public class ArrayProducer implements MessageProducer {
+public class ArrayProducer extends Serialize implements MessageProducer {
 	private Message[] messages;
 	private int delay = 0;
 	private int times = 0;
