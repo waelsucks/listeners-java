@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 
 import misc.Message;
 
-public class TextfileProducer implements MessageProducer {
+public class TextfileProducer extends Serialize implements MessageProducer {
 
     private int delay;
     private int times;

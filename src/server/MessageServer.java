@@ -5,6 +5,7 @@ import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import misc.ClientHandler;
 import misc.Message;
@@ -16,9 +17,12 @@ public class MessageServer extends Thread implements PropertyChangeListener {
     MessageManager messageManager;
     Message currentMessage;
 
+    ArrayList<ClientHandler> informees;
+
 	public MessageServer(MessageManager messageManager, int i) {
 
         currentMessage = null;
+        informees = new ArrayList<ClientHandler>();
 
         try {
 
@@ -45,7 +49,7 @@ public class MessageServer extends Thread implements PropertyChangeListener {
 
                 System.out.println("A client has connected! Serving a handler.");
 
-                new ClientHandler(socket, this);
+                informees.add(new ClientHandler(socket, this));
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -58,6 +62,11 @@ public class MessageServer extends Thread implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         currentMessage = (Message) evt.getNewValue();
+
+        for (ClientHandler clientHandler : informees) {
+            clientHandler.newMessage(currentMessage);
+        }
+
     }
 
     public Message getCurrentMessage(){
