@@ -14,6 +14,8 @@ import producers.TextfileProducer;
 import view.P1Viewer;
 import view.Viewer;
 
+// YAS
+
 public class MainP1 {
 	public static void main(String[] args) throws IOException {
 		Buffer<Message> messageBuffer = new Buffer<Message>();
