@@ -2,15 +2,15 @@ package p2;
 
 import javax.swing.ImageIcon;
 
-import p1.Buffer;
-import p1.Message;
-import p1.MessageManager;
-import p1.MessageProducer;
-import p1.MessageProducerInput;
-import p1.P1Viewer;
-import p1.Producer;
-import p1.TextfileProducer;
-import p1.Viewer;
+import misc.Buffer;
+import misc.Message;
+import misc.MessageManager;
+import producers.MessageProducer;
+import producers.MessageProducerInput;
+import producers.Producer;
+import producers.TextfileProducer;
+import view.P1Viewer;
+import view.Viewer;
 
 public class MainP2 {
 	public static void main(String[] args) {
