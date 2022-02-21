@@ -33,6 +33,4 @@ public class MessageManager extends Thread {
         support.addPropertyChangeListener(listener);
     }
 
-    
-
 }

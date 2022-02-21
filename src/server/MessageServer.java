@@ -4,9 +4,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.ArrayList;
+import java.net.Socket;
 
-import misc.Buffer;
+import misc.ClientHandler;
 import misc.Message;
 import misc.MessageManager;
 
@@ -14,13 +14,11 @@ public class MessageServer extends Thread implements PropertyChangeListener {
 
     ServerSocket serverSocket;
     MessageManager messageManager;
-
-    Buffer<Message> messageList;
+    Message currentMessage;
 
 	public MessageServer(MessageManager messageManager, int i) {
 
-        messageList = new Buffer<Message>();
-
+        currentMessage = null;
 
         try {
 
@@ -41,7 +39,17 @@ public class MessageServer extends Thread implements PropertyChangeListener {
 		
         while (!interrupted()) {
             
-            
+            try {
+
+                Socket socket = serverSocket.accept();
+
+                System.out.println("A client has connected! Serving a handler.");
+
+                new ClientHandler(socket, this);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         }
 
@@ -49,9 +57,11 @@ public class MessageServer extends Thread implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        messageList.put((Message) evt.getNewValue());
+        currentMessage = (Message) evt.getNewValue();
     }
 
+    public Message getCurrentMessage(){
+        return currentMessage;
+    }
 
-    
 }
