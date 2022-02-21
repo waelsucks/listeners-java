@@ -1,7 +1,6 @@
 package tests;
 
 import javax.swing.ImageIcon;
-
 import misc.Buffer;
 import misc.Message;
 import misc.MessageManager;
@@ -11,6 +10,7 @@ import producers.MessageProducerInput;
 import producers.Producer;
 import view.P1Viewer;
 import view.Viewer;
+
 
 public class TestP2Input {
 	public static void main(String[] args) {
@@ -53,3 +53,30 @@ public class TestP2Input {
         return new ArrayProducer(messages,times,delay);       
     }
 }
+
+class ShowGubbe implements MessageProducer {
+	private int delay;
+	
+	public ShowGubbe(int delay) {
+		this.delay = delay;
+	}
+
+	@Override
+	public int delay() {
+		return delay;
+	}
+
+	@Override
+	public int times() {
+		return 1;
+	}
+
+	@Override
+	public int size() {
+		return 1;
+	}
+
+	@Override
+	public Message nextMessage() {
+		return new Message("Hi folks...",new ImageIcon("images/gubbe.jpg"));
+	}
