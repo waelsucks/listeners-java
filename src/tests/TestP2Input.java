@@ -1,6 +1,8 @@
 package tests;
 
 import javax.swing.ImageIcon;
+
+import client.MessageProducerClient;
 import misc.Buffer;
 import misc.Message;
 import misc.MessageManager;
@@ -8,6 +10,7 @@ import producers.ArrayProducer;
 import producers.MessageProducer;
 import producers.MessageProducerInput;
 import producers.Producer;
+import server.MessageProducerServer;
 import view.P1Viewer;
 import view.Viewer;
 
